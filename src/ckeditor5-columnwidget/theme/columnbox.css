@@ -1,0 +1,8 @@
+.column-box {
+    display: flex;
+    margin: 1em 0;
+}
+
+.column-box-child {
+    flex: 50%;
+}
