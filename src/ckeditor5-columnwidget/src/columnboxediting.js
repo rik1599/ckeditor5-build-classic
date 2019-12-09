@@ -64,12 +64,13 @@ export default class ColumnBoxEditing extends Plugin {
      */
     _defineConverters() {
         const conversion = this.editor.conversion;
+        const cssClassesColumnBox = ['column-box', 'prova'];
 
         conversion.for('upcast').elementToElement({
             model: 'columnBox',
             view: {
                 name: 'section',
-                classes: 'column-box'
+                classes: cssClassesColumnBox
             }
         });
 
@@ -77,14 +78,14 @@ export default class ColumnBoxEditing extends Plugin {
             model: 'columnBox',
             view: {
                 name: 'section',
-                classes: 'column-box'
+                classes: cssClassesColumnBox
             }
         });
 
         conversion.for('editingDowncast').elementToElement({
             model: 'columnBox',
             view: (modelElement, viewVriter) => {
-                const section = viewVriter.createContainerElement('section', {class: 'column-box'});
+                const section = viewVriter.createContainerElement('section', { class: Array.join(cssClassesColumnBox, ' ') });
 
                 return toWidget(section, viewVriter, {
                     label: 'column box widget', 
