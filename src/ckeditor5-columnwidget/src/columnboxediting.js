@@ -64,6 +64,7 @@ export default class ColumnBoxEditing extends Plugin {
 	_defineConverters() {
 		const conversion = this.editor.conversion;
 		const cssClassesColumnBox = [ 'column-box', 'prova' ];
+		const cssClassesColumnBoxChild = [ 'column-box-child', 'prova' ];
 
 		conversion.for( 'upcast' ).elementToElement( {
 			model: 'columnBox',
@@ -84,7 +85,7 @@ export default class ColumnBoxEditing extends Plugin {
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'columnBox',
 			view: ( modelElement, viewVriter ) => {
-				const section = viewVriter.createContainerElement( 'section', { class: Array.prototype.join( cssClassesColumnBox, ' ' ) } );
+				const section = viewVriter.createContainerElement( 'section', { class: cssClassesColumnBox.join( ' ' ) } );
 
 				return toWidget( section, viewVriter, {
 					label: 'column box widget',
@@ -97,7 +98,7 @@ export default class ColumnBoxEditing extends Plugin {
 			model: 'columnBoxChild',
 			view: {
 				name: 'div',
-				classes: 'column-box-child'
+				classes: cssClassesColumnBoxChild
 			}
 		} );
 
@@ -105,14 +106,14 @@ export default class ColumnBoxEditing extends Plugin {
 			model: 'columnBoxChild',
 			view: {
 				name: 'div',
-				classes: 'column-box-child'
+				classes: cssClassesColumnBoxChild
 			}
 		} );
 
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'columnBoxChild',
 			view: ( modelElement, viewVriter ) => {
-				const div = viewVriter.createEditableElement( 'div', { class: 'column-box-child' } );
+				const div = viewVriter.createEditableElement( 'div', { class: cssClassesColumnBoxChild.join( ' ' ) } );
 
 				return toWidgetEditable( div, viewVriter );
 			}
